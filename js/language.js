@@ -69,7 +69,7 @@ var txt = {
 		brown: 'brown',
 		beard: 'Beard',
 		body: 'Body',
-		boobs: 'Körbchengröße',
+		boobs: 'Boob size',
 		figure: 'Figure',
 		thin: 'thin',
 		sporty: 'sporty',
