@@ -1,0 +1,500 @@
+body{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	min-width:240px;
+}
+div, span, body, a, label{
+	font-family:Verdana;
+	box-sizing: border-box;
+}
+label{
+	cursor: pointer;
+}
+
+/*** IDs ***/
+#language{
+	position:fixed;
+	top:85px;
+	right:10px;
+}
+#header{
+	background: #a0d8ef; 
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2EwZDhlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMzJSIgc3RvcC1jb2xvcj0iI2RkZjFmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iI2RkZjFmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iI2RkZjFmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY4JSIgc3RvcC1jb2xvcj0iI2VkYzY4NCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmN2NhNzYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #a0d8ef 0%, #ddf1f9 33%, #ddf1f9 49%, #ddf1f9 49%, #edc684 68%, #f7ca76 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0d8ef), color-stop(33%,#ddf1f9), color-stop(49%,#ddf1f9), color-stop(49%,#ddf1f9), color-stop(68%,#edc684), color-stop(100%,#f7ca76)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #a0d8ef 0%,#ddf1f9 33%,#ddf1f9 49%,#ddf1f9 49%,#edc684 68%,#f7ca76 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #a0d8ef 0%,#ddf1f9 33%,#ddf1f9 49%,#ddf1f9 49%,#edc684 68%,#f7ca76 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #a0d8ef 0%,#ddf1f9 33%,#ddf1f9 49%,#ddf1f9 49%,#edc684 68%,#f7ca76 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #a0d8ef 0%,#ddf1f9 33%,#ddf1f9 49%,#ddf1f9 49%,#edc684 68%,#f7ca76 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0d8ef', endColorstr='#f7ca76',GradientType=0 ); /* IE6-8 */
+	background-position:center center;
+	background-size:cover;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:120px;
+	border-bottom:1px solid grey;
+}
+#camel{
+	background-image:url(http://exchangedownloads.smarttech.com/public/content/f9/f9a5e0a6-38e8-42c5-9b5b-2edc0006f847/previews/medium/0001.png);
+	background-position:center center;
+	background-size:contain;
+	background-repeat: no-repeat;
+	display:inline-block;
+	width:100px;
+	height:100px;
+	margin:10px;
+	float:left;
+	cursor: pointer;
+}
+#subhead{
+	font-weight:bold;
+	color:#000;
+	font-size:22px;
+	padding-top:20px;
+	text-shadow: 0 0 5px #629CC7;
+}
+#desc{
+	margin:0 30px 0 10px;
+}
+#female-pic, #male-pic{
+	height:150px;
+	background-size:150px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	width:100%;
+	border-bottom:1px solid #3071A9;
+	
+}
+#female-pic:hover,#male-pic:hover{
+	background-color:#ddf1f9;
+	animation: enlarge-gender 1s;
+	animation-iteration-count:1;
+	animation-fill-mode: forwards;
+}
+#female-txt, #male-txt{
+	position:relative;
+	top:25px;
+	display:block;
+	margin:0 10px 0 10px;
+	text-align:center;
+}
+
+/*** CLASSES ***/
+.flag{
+	height:20px;
+	border: 1px solid grey;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.no-header{
+	margin-top:140px;
+}
+.centercontainer, .centercontainer-mid, .centercontainer-max, .buttoncontainer{
+	margin:0 auto;
+	display:block;
+    width:85%;
+	max-width:960px;
+	min-height:50px;
+}
+.centercontainer-mid{
+	height:70px;
+}
+.centercontainer-max{
+	height:90px;
+}
+.result{
+	float:right;
+}
+.name-result{
+	float:left;
+	width:25%;	
+	display:block;
+	margin:0 10px;
+	font-size:22px;
+}
+.name-result-beard{
+	float:left;
+	width:25%;	
+	display:block;
+	margin:10px;
+	font-size:22px;
+}
+.name-result-boobs{
+	float:left;
+	width:25%;	
+	display:block;
+	margin:10px;
+	font-size:22px;
+}
+.name-result-body{
+	float:left;
+	width:25%;	
+	display:block;
+	margin:20px 10px;
+	font-size:22px;
+}
+.name-result-hair{
+	float:left;
+	width:25%;	
+	display:block;
+	margin:20px 10px;
+	font-size:22px;
+}
+.range-slider, .input-area{
+	float:right;
+	width:70%;	
+	display:block;
+}
+.fadein-section{
+	animation: fadein 1s;
+	animation-iteration-count:1;
+	animation-fill-mode: forwards;
+}
+.gender{
+	position:relative;
+	width:45%;
+	height:300px;
+	margin:20px 10px 20px 10px;
+	border: 1px solid #3071A9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	cursor: pointer;
+	float:left;
+}
+.bottom-line{
+	border-bottom:1px solid #3071A9;
+	margin-bottom:20px;
+}
+.input-select{
+	width: 100%;
+	height: 30px;
+	font-size:22px;
+	vertical-align: middle;
+	background: transparent;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 1;
+	border: 1px solid #3071A9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.radio-hairlength, .radio-beard, .radio-body, .radio-boobs{
+	display:none;
+}
+.radiocontainer{
+	border: 1px solid #3071A9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border-collapse: collapse;
+}
+.radiolabel{
+	position:relative;
+	width:25%;
+	height:30px;
+	text-align:center;
+	border-right: 1px solid #3071A9;
+	display:inline-block;
+	border-collapse: collapse;
+	line-height:30px;
+	vertical-align:middle;
+}
+.radiolabel-beard{
+	position:relative;
+	width:25%;
+	height:50px;
+	text-align:center;
+	border-right: 1px solid #3071A9;
+	display:inline-block;
+	border-collapse: collapse;
+	line-height:50px;
+	vertical-align:middle;
+}
+.radiolabel-boobs{
+	position:relative;
+	width:25%;
+	height:50px;
+	text-align:center;
+	border-right: 1px solid #3071A9;
+	display:inline-block;
+	border-collapse: collapse;
+	line-height:50px;
+	vertical-align:middle;
+}
+.radiolabel-hair{
+	position:relative;
+	width:33.333333333%;
+	height:70px;
+	text-align:center;
+	border-right: 1px solid #3071A9;
+	display:inline-block;
+	border-collapse: collapse;
+	line-height:70px;
+	vertical-align:middle;
+}
+.radiolabel-body{
+	position:relative;
+	width:33.333333333%;
+	height:70px;
+	text-align:center;
+	border-right: 1px solid #3071A9;
+	display:inline-block;
+	border-collapse: collapse;
+	line-height:70px;
+	vertical-align:middle;
+}
+.radio-active{
+	background-color:#3071A9;
+	color:white;
+}
+.radio-naked{
+	position:relative;
+	display:inline-block;
+	width:80px;
+}
+
+.beard{
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size: 45px;
+	width:50px;
+	height:50px;
+}
+.beard:hover{
+	animation: enlarge-beard 1s;
+	animation-iteration-count:1;
+	animation-fill-mode: forwards;
+}
+.none{
+	background-image:url(http://kamelrechner.de/img/beard-none.png);
+}
+.moustache{
+	background-image:url(http://kamelrechner.de/img/beard-small.png);
+}
+.goatee{
+	background-image:url(http://kamelrechner.de/img/beard-middle.png);
+}
+.full{
+	background-image:url(http://kamelrechner.de/img/beard-full.png);
+}
+
+.boobs{
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size: 45px;
+	width:50px;
+	height:50px;
+}
+.boobs:hover{
+	animation: enlarge-beard 1s;
+	animation-iteration-count:1;
+	animation-fill-mode: forwards;
+}
+.noboobs{
+	background-image:url(http://kamelrechner.de/img/boobs-a.png);
+}
+.small{
+	background-image:url(http://kamelrechner.de/img/boobs-b.png);
+}
+.boobsmiddle{
+	background-image:url(http://kamelrechner.de/img/boobs-c.png);
+}
+.large{
+	background-image:url(http://kamelrechner.de/img/boobs-d.png);
+}
+
+.hair{
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size: 65px;
+	width:70px;
+	height:70px;
+}
+.hair:hover{
+	animation: enlarge-body 1s;
+	animation-iteration-count:1;
+	animation-fill-mode: forwards;
+}
+.long{
+	background-image:url(http://kamelrechner.de/img/woman-long-hair.png);
+}
+.middle{
+	background-image:url(http://kamelrechner.de/img/woman-middle-hair.png);
+}
+.short{
+	background-image:url(http://kamelrechner.de/img/woman-short-hair.png);
+}
+
+.body{
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size: 65px;
+	width:70px;
+	height:70px;
+}
+.body:hover{
+	animation: enlarge-body 1s;
+	animation-iteration-count:1;
+	animation-fill-mode: forwards;
+}
+
+.built{
+	background-image:url(http://kamelrechner.de/img/body-1.png);
+}
+.normal{
+	background-image:url(http://kamelrechner.de/img/body-2.png);
+}
+.fat{
+	background-image:url(http://kamelrechner.de/img/body-3.png);
+}
+
+.display-none{
+	display:none;
+}
+.button-calculate{
+	position:relative;
+	width:230px;
+	height:40px;
+	line-height:35px;
+	vertical-align:middle;
+	color:white;
+	background-color:#3071A9;
+	border: 1px solid #3071A9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 17px;
+	text-align:center;
+	margin:0 auto 20px auto;
+	display:block;
+	cursor:pointer;
+}
+
+/*** MEDIA QUERIES ***/
+@media (max-width: 300px){
+	#camel{
+		display:none;
+	}
+	#female-pic, #male-pic{
+		display:none;
+	}
+	#female-txt, #male-txt{
+		position:relative;
+		display:block;
+		margin:0 20px 0 20px;
+	}
+}
+
+@media (max-width: 585px){
+	.centercontainer {
+		min-height:100px;
+	}
+	hr{
+		display:none;
+	}
+	.centercontainer-mid{
+		height:120px;
+	}
+	.centercontainer-max{
+		height:140px;
+	}
+
+	.name-result{
+		width:100%;
+		margin: 0 20px 20px 0;
+	}
+	.name-result-beard{
+		width:100%;
+		margin: 0 20px 20px 0;
+	}
+	.name-result-boobs{
+		width:100%;
+		margin: 0 20px 20px 0;
+	}
+	.name-result-body{
+		width:100%;
+		margin: 0 20px 20px 0;
+	}
+	.name-result-hair{
+		width:100%;
+		margin: 0 20px 20px 0;
+	}
+	.range-slider, .input-area{
+		width:100%;
+	}
+	.gender{
+		position:relative;
+		width:100%;
+		height:100px;
+		margin:20px 0 0 0;
+		clear:both;
+		display:block;
+		border: 1px solid #3071A9;
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+		border-radius: 2px;
+		cursor: pointer;
+	}
+	#desc{
+		margin:0 30px 0 0;
+	}
+
+	#female-pic, #male-pic{
+		float:left;
+		height:100px;
+		background-size:95%;
+		background-position: center 4px;
+		background-repeat: no-repeat;
+		width:100px;
+		border-bottom:1px solid transparent;
+
+	}
+	#female-pic:hover,#male-pic:hover{
+		background-color:#ddf1f9;
+		animation: none 1s;
+		animation-iteration-count:1;
+		animation-fill-mode: forwards;
+	}
+
+	#female-txt, #male-txt{
+		position:relative;
+		top:25px;
+		display:block;
+		margin:0 10px 0 0;
+	}
+	
+	#subhead{
+		font-weight:bold;
+		color:#000;
+		font-size:17px;
+		padding-top:20px;
+		text-shadow: 0 0 5px #629CC7;
+	}
+
+}
+
+/*** ANIMATIONS ***/
+@keyframes fadein{
+	  0%{ opacity:0; }
+	100%{ opacity:1; }
+}
+@keyframes enlarge-gender{
+	from { background-size:150px; }
+	to { background-size:180px;}
+}
+@keyframes enlarge-beard{
+	from { background-size:45px; }
+	to { background-size:50px;}
+}
+@keyframes enlarge-body{
+	from { background-size:65px; }
+	to { background-size:70px;}
+}

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kamelrechner</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="js/language.js"></script>
+	<script type="text/javascript" src="js/kamelrechner.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/range.css">
+	<link rel="stylesheet" type="text/css" href="css/kamelrechner.css">
+	
+</head>
+
+<body ng-controller="CamelCtrl as cc">
+	<form method="post" action="#" onsubmit="return false;">
+			
+	<section class="no-header" id="genderselection" style="display:{{cc.genderDisplay}};clear:both;">
+		
+		<div class="centercontainer">
+			<div id="desc">{{cc.txt.desc}}</div>
+			<label for="gender-female" class="gender">
+				<div id="female-pic" style="background-image: url(http://kamelrechner.de/img/select-woman.png);"></div>
+				<span id="female-txt">{{cc.txt.headf}}</span>
+				<input style="visibility:hidden;" id="gender-female" type="radio" ng-model="cc.gender" ng-click="cc.genderSelection()" value="female" />
+			</label>
+			
+			<label for="gender-male" class="gender">
+				<div id="male-pic" style="background-image: url(http://kamelrechner.de/img/select-man.png);"></div>
+				<span id="male-txt">{{cc.txt.headm}}</span>
+				<input style="visibility:hidden;" id="gender-male" type="radio" ng-model="cc.gender" ng-click="cc.genderSelection()" value="male" />	
+			</label>
+		</div>
+		
+	</section>
+	
+	<section class="no-header" id="male" style="display:{{cc.maleDisplay}};">
+		
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.age}}</span>
+				<span class="result">{{cc.male.age}}</span>
+			</div>
+			<div class="range-slider">
+				<input name="male-age" min="14" max="70" value="22" type="range" ng-model="cc.male.age" ng-change="cc.updateSelection()">
+			</div>
+		</div>
+		
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.height}}</span>
+				<span class="result">{{cc.male.height}}</span>
+			</div>
+			<div class="range-slider">
+				<input name="male-height" min="140" max="220" value="176" type="range" ng-model="cc.male.height" ng-change="cc.updateSelection()">
+			</div>
+		</div>
+
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.haircolor}}</span>
+				<span class="result display-none">{{cc.male.haircolor}}</span>
+			</div>
+			<div class="input-area">
+				<select class="input-select select-male-haircolor" name="male-haircolor" ng-model="cc.male.haircolor" ng-change="cc.updateSelection()">
+					<option value="5" selected="selected">{{cc.txt.blonde}}</option>
+					<option value="4">{{cc.txt.brown}}</option>
+					<option value="3">{{cc.txt.black}}</option>
+					<option value="2">{{cc.txt.red}}</option>
+					<option value="1">{{cc.txt.grey}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.hairlength}}</span>
+				<span class="result display-none">{{cc.male.hairlength}}</span>
+			</div>
+			<div class="input-area">
+				<div class="radiocontainer">
+					<input type="radio" class="radio-hairlength" name="male-hairlength" id="hairlength-male-long" value="4" ng-model="cc.male.hairlength" ng-click="cc.hairlengthSelection()" checked="checked" />
+					<input type="radio" class="radio-hairlength" name="male-hairlength" id="hairlength-male-middle" value="3" ng-model="cc.male.hairlength" ng-click="cc.hairlengthSelection()" />
+					<input type="radio" class="radio-hairlength" name="male-hairlength" id="hairlength-male-short" value="2" ng-model="cc.male.hairlength" ng-click="cc.hairlengthSelection()" />
+					<input type="radio" class="radio-hairlength" name="male-hairlength" id="hairlength-male-bald" value="1" ng-model="cc.male.hairlength" ng-click="cc.hairlengthSelection()" />
+					<label for="hairlength-male-long" class="radiolabel {{cc.hl4}}">{{cc.txt.long}}</label><label for="hairlength-male-middle" class="radiolabel {{cc.hl3}}">{{cc.txt.middle}}</label><label for="hairlength-male-short" class="radiolabel {{cc.hl2}}">{{cc.txt.short}}</label><label style="border:0px;" for="hairlength-male-bald" class="radiolabel {{cc.hl1}}">{{cc.txt.bald}}</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.eyecolor}}</span>
+				<span class="result display-none">{{cc.male.eyecolor}}</span>
+			</div>
+			<div class="input-area">
+				<div class="radiocontainer-naked">
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="male-eyecolor" value="4" ng-model="cc.male.eyecolor" ng-click="cc.eyecolorSelection()" checked="checked" />&nbsp;{{cc.txt.blue}}</div>
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="male-eyecolor" value="3" ng-model="cc.male.eyecolor" ng-click="cc.eyecolorSelection()" />&nbsp;{{cc.txt.green}}</div>
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="male-eyecolor" value="2" ng-model="cc.male.eyecolor" ng-click="cc.eyecolorSelection()" />&nbsp;{{cc.txt.brown}}</div>
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="male-eyecolor" value="1" ng-model="cc.male.eyecolor" ng-click="cc.eyecolorSelection()" />&nbsp;{{cc.txt.grey}}</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="centercontainer-mid bottom-line">
+			<div class="name-result-beard">
+				<span class="name">{{cc.txt.beard}}</span>
+				<span class="result display-none">{{cc.male.beard}}</span>
+			</div>
+			<div class="input-area">
+				<div class="radiocontainer">
+					<input type="radio" class="radio-beard" name="male-beard" id="beard-male-none" value="4" ng-model="cc.male.beard" ng-click="cc.beardSelection()" checked="checked" />
+					<input type="radio" class="radio-beard" name="male-beard" id="beard-male-moustache" value="3" ng-model="cc.male.beard" ng-click="cc.beardSelection()" />
+					<input type="radio" class="radio-beard" name="male-beard" id="beard-male-goatee" value="2" ng-model="cc.male.beard" ng-click="cc.beardSelection()" />
+					<input type="radio" class="radio-beard" name="male-beard" id="beard-male-full" value="1" ng-model="cc.male.beard" ng-click="cc.beardSelection()" />
+					<label for="beard-male-none" class="radiolabel-beard {{cc.bl4}}"><img class="beard none" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label for="beard-male-moustache" class="radiolabel-beard {{cc.bl3}}"><img class="beard moustache" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label for="beard-male-goatee" class="radiolabel-beard {{cc.bl2}}"><img class="beard goatee" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label style="border:0px;" for="beard-male-full" class="radiolabel-beard {{cc.bl1}}"><img class="beard full" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="centercontainer-max bottom-line">
+			<div class="name-result-body">
+				<span class="name">{{cc.txt.body}}</span>
+				<span class="result display-none">{{cc.male.body}}</span>
+			</div>
+			<div class="input-area">
+				<div class="radiocontainer">
+					<input type="radio" class="radio-body" name="male-body" id="body-male-built" value="3" ng-model="cc.male.body" ng-click="cc.bodySelection()" />
+					<input type="radio" class="radio-body" name="male-body" id="body-male-normal" value="2" ng-model="cc.male.body" ng-click="cc.bodySelection()" />
+					<input type="radio" class="radio-body" name="male-body" id="body-male-fat" value="1" ng-model="cc.male.body" ng-click="cc.bodySelection()" />
+					<label for="body-male-built" class="radiolabel-body {{cc.bd3}}"><img class="body built" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label for="body-male-normal" class="radiolabel-body {{cc.bd2}}"><img class="body normal" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label style="border:0px;" for="body-male-fat" class="radiolabel-body {{cc.bd1}}"><img class="body fat" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="buttoncontainer bottom-line">
+			<button class="button-calculate" ng-click="cc.calculate()">{{cc.txt.calculate}}</button>
+		</div>
+				
+	</section>
+	
+	<section class="no-header" id="female" style="display:{{cc.femaleDisplay}};">
+		
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.age}}</span>
+				<span class="result">{{cc.female.age}}</span>
+			</div>
+			<div class="range-slider">
+				<input name="female-age" min="14" max="70" value="22" type="range" ng-model="cc.female.age" ng-change="cc.updateSelection()">
+			</div>
+		</div>
+		
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.height}}</span>
+				<span class="result">{{cc.female.height}}</span>
+			</div>
+			<div class="range-slider">
+				<input name="female-height" min="140" max="220" value="176" type="range" ng-model="cc.female.height" ng-change="cc.updateSelection()">
+			</div>
+		</div>
+
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.haircolor}}</span>
+				<span class="result display-none">{{cc.female.haircolor}}</span>
+			</div>
+			<div class="input-area">
+				<select class="input-select select-female-haircolor" name="female-haircolor" ng-model="cc.female.haircolor" ng-change="cc.updateSelection()">
+					<option value="5" selected="selected">{{cc.txt.blonde}}</option>
+					<option value="4">{{cc.txt.brown}}</option>
+					<option value="3">{{cc.txt.black}}</option>
+					<option value="2">{{cc.txt.red}}</option>
+					<option value="1">{{cc.txt.grey}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="centercontainer-max bottom-line">
+			<div class="name-result-hair">
+				<span class="name">{{cc.txt.hairlength}}</span>
+				<span class="result display-none">{{cc.female.hairlength}}</span>
+			</div>
+			<div class="input-area">
+				<div class="radiocontainer">
+					<input type="radio" class="radio-hairlength" name="female-hairlength" id="hairlength-female-long" value="3" ng-model="cc.female.hairlength" ng-click="cc.hairlengthSelection()" checked="checked" />
+					<input type="radio" class="radio-hairlength" name="female-hairlength" id="hairlength-female-middle" value="2" ng-model="cc.female.hairlength" ng-click="cc.hairlengthSelection()" />
+					<input type="radio" class="radio-hairlength" name="female-hairlength" id="hairlength-female-short" value="1" ng-model="cc.female.hairlength" ng-click="cc.hairlengthSelection()" />
+					<label for="hairlength-female-long" class="radiolabel-hair {{cc.hl3}}"><img class="hair long" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label for="hairlength-female-middle" class="radiolabel-hair {{cc.hl2}}"><img class="hair middle" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label for="hairlength-female-short" class="radiolabel-hair {{cc.hl1}}" style="border:0px;"><img class="hair short" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.eyecolor}}</span>
+				<span class="result display-none">{{cc.female.eyecolor}}</span>
+			</div>
+			<div class="input-area">
+				<div class="radiocontainer-naked">
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="female-eyecolor" value="4" ng-model="cc.female.eyecolor" ng-click="cc.eyecolorSelection()" checked="checked" />&nbsp;{{cc.txt.blue}}</div>
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="female-eyecolor" value="3" ng-model="cc.female.eyecolor" ng-click="cc.eyecolorSelection()" />&nbsp;{{cc.txt.green}}</div>
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="female-eyecolor" value="2" ng-model="cc.female.eyecolor" ng-click="cc.eyecolorSelection()" />&nbsp;{{cc.txt.brown}}</div>
+					<div class="radio-naked"><input type="radio" class="radio-eyecolor" name="female-eyecolor" value="1" ng-model="cc.female.eyecolor" ng-click="cc.eyecolorSelection()" />&nbsp;{{cc.txt.grey}}</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="centercontainer-mid bottom-line">
+			<div class="name-result-boobs">
+				<span class="name">{{cc.txt.boobs}}</span>
+				<span class="result display-none">{{cc.female.boobs}}</span>
+			</div>
+			<div class="input-area">
+				<div class="radiocontainer">
+					<input type="radio" class="radio-boobs" name="female-boobs" id="boobs-female-none" value="1" ng-model="cc.female.boobs" ng-click="cc.boobsSelection()" checked="checked" />
+					<input type="radio" class="radio-boobs" name="female-boobs" id="boobs-female-small" value="2" ng-model="cc.female.boobs" ng-click="cc.boobsSelection()" />
+					<input type="radio" class="radio-boobs" name="female-boobs" id="boobs-female-middle" value="3" ng-model="cc.female.boobs" ng-click="cc.boobsSelection()" />
+					<input type="radio" class="radio-boobs" name="female-boobs" id="boobs-female-large" value="4" ng-model="cc.female.boobs" ng-click="cc.boobsSelection()" />
+					<label for="boobs-female-none" class="radiolabel-boobs {{cc.bo1}}"><img class="boobs noboobs" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label for="boobs-female-small" class="radiolabel-boobs {{cc.bo2}}"><img class="boobs small" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label for="boobs-female-middle" class="radiolabel-boobs {{cc.bo3}}"><img class="boobs boobsmiddle" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label><label style="border:0px;" for="boobs-female-large" class="radiolabel-boobs {{cc.bo4}}"><img class="boobs large" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="centercontainer bottom-line">
+			<div class="name-result">
+				<span class="name">{{cc.txt.figure}}</span>
+				<span class="result display-none">{{cc.female.body}}</span>
+			</div>
+			<div class="input-area">
+				<select class="input-select select-female-body" name="female-body" ng-model="cc.female.body" ng-change="cc.updateSelection()">
+					<option value="5" selected="selected">{{cc.txt.thin}}</option>
+					<option value="4">{{cc.txt.sporty}}</option>
+					<option value="3">{{cc.txt.normal}}</option>
+					<option value="2">{{cc.txt.chubby}}</option>
+					<option value="1">{{cc.txt.fat}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="buttoncontainer bottom-line">
+			<button class="button-calculate" ng-click="cc.calculate()">{{cc.txt.calculate}}</button>
+		</div>
+		
+	</section>
+
+	<section class="no-header" id="result-male" style="display:{{cc.maleResult}};">
+		
+		<div class="centercontainer bottom-line">		
+			<h2 style="text-align:center; margin: 10px auto;">{{cc.txt.resultm1}}<h2>
+			<h3 style="text-align:center; margin: 10px auto;font-size:40px;font-weight:bold;" id="run-male-result">0</h3>
+			<h2 style="text-align:center; margin: 10px auto;">{{cc.txt.resultm2}}</h2>
+		</div>
+		<div class="buttoncontainer bottom-line">
+			<button class="button-calculate" ng-click="cc.again()">{{cc.txt.again}}</button>
+		</div>
+	
+	</section>
+
+	<section class="no-header" id="result-female" style="display:{{cc.femaleResult}};">
+		
+		<div class="centercontainer bottom-line">
+			<h2 style="text-align:center; margin: 10px auto;">{{cc.txt.resultf1}}<h2>
+			<h3 style="text-align:center; margin: 10px auto;font-size:40px;font-weight:bold;" id="run-female-result">0</h3>
+			<h2 style="text-align:center; margin: 10px auto;">{{cc.txt.resultf2}}</h2>
+		</div>
+		<div class="buttoncontainer bottom-line">
+			<button class="button-calculate" ng-click="cc.again()">{{cc.txt.again}}</button>
+		</div>
+		
+	</section>
+	
+	<section id="header">
+		
+		<div class="centercontainer">
+			<div id="camel" ng-click="cc.again()"></div>
+			<div id="subhead">{{cc.txt.headline}}</div>
+		</div>
+		
+		<div id="language">
+			<img class="flag" style="margin-right:10px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png" ng-click="cc.languageSelection('de')" title="{{cc.txt.german}}" />
+			<img class="flag" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1280px-Flag_of_the_United_Kingdom.svg.png" ng-click="cc.languageSelection('en')" title="{{cc.txt.english}}">
+		</div>
+		
+	</section>
+		
+	</form>
+</body> 
+</html>
